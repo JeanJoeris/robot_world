@@ -1,0 +1,19 @@
+<h2><%= @robot.name %></h2>
+<h2><%= @robot.city %></h2>
+<h2><%= @robot.state %></h2>
+<h2><%= @robot.birthday %></h2>
+<h2><%= @robot.hire_date %></h2>
+<h2><%= @robot.department %></h2>
+<img src="https://robohash.org/<%= @robot.name + @robot.city + @robot.department %>"/>
+<form action="/robots/<%= @robot.id %>" method="post">
+  <input type="hidden" name="_method" value="delete"/>
+  <input type="submit" name="delete" value="kill dat data!"/>
+</form>
+
+<!-- @id         = robot_data[:id]
+@name       = robot_data[:name]
+@city       = robot_data[:city]
+@state      = robot_data[:state]
+@birthday   = robot_data[:birthday]
+@hire_date  = robot_data[:hire_date]
+@department = robot_data[:department] -->

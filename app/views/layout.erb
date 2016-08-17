@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/application.css">
+  <title>World of Robots</title>
+</head>
+<body>
+  <div class="navbar navbar-default">
+    <h1 class="navbar-brand">Robot World</h1>
+    <ul class='nav navbar-right'>
+      <li><a href = "/">Home</a></li>
+      <li><a href = "/robots">Robots</a></li>
+      <li><a href = "/robots/new">Create a robot</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

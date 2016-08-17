@@ -1,0 +1,57 @@
+<h2>Average robot age:</h2>
+<p><%= @average_age %></p>
+<h2>Robots by city</h2>
+<table class="table">
+  <tr>
+    <th>City</th>
+    <th>Robot Count</th>
+  </tr>
+  <% @robots_by_city.each do |city, robots_in_city| %>
+  <tr>
+    <td><%= city %></td>
+    <td><%= robots_in_city.count %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Robots by state</h2>
+<table class="table">
+  <tr>
+    <th>State</th>
+    <th>Robot Count</th>
+  </tr>
+  <% @robots_by_state.each do |state, robots_in_state| %>
+  <tr>
+    <td><%= state %></td>
+    <td><%= robots_in_state.count %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Robots by department</h2>
+<table class="table">
+  <tr>
+    <th>Department</th>
+    <th>Robot Count</th>
+  </tr>
+  <% @robots_by_department.each do |department, robots_in_state| %>
+  <tr>
+    <td><%= department %></td>
+    <td><%= robots_in_state.count %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Robots by year</h2>
+<table class="table">
+  <tr>
+    <th>Hire year</th>
+    <th>Robot Count</th>
+  </tr>
+  <% @robots_by_hire_year.each do |hire_year, robots_in_state| %>
+  <tr>
+    <td><%= hire_year %></td>
+    <td><%= robots_in_state.count %></td>
+  </tr>
+  <% end %>
+</table>

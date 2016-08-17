@@ -1,0 +1,31 @@
+---
+robots:
+- :id: 1
+  :name: Hal
+  :city: Jupiter
+  :state: The planet Jupiter
+  :birthday: 1/1/2001
+  :hire_date: 1/2/2001
+  :department: Killing humans
+- :id: 2
+  :name: C3P0
+  :city: Mos Eisley
+  :state: Tatooine
+  :birthday: '1900-04-28'
+  :hire_date: '2016-01-01'
+  :department: Human-cyborg relations
+- :id: 3
+  :name: R2D2
+  :city: Mos Eisley
+  :state: "??"
+  :birthday: 02/05/1965
+  :hire_date: 06/08/2001
+  :department: Astromech
+- :id: 4
+  :name: Steve
+  :city: Fort Collins
+  :state: Colorado
+  :birthday: 8/29/1980
+  :hire_date: 5/16/2004
+  :department: Being useless
+total: 4
