@@ -1,19 +1,50 @@
-<h2><%= @robot.name %></h2>
-<h2><%= @robot.city %></h2>
-<h2><%= @robot.state %></h2>
-<h2><%= @robot.birthday %></h2>
-<h2><%= @robot.hire_date %></h2>
-<h2><%= @robot.department %></h2>
-<img src="https://robohash.org/<%= @robot.name + @robot.city + @robot.department %>"/>
-<form action="/robots/<%= @robot.id %>" method="post">
-  <input type="hidden" name="_method" value="delete"/>
-  <input type="submit" name="delete" value="kill dat data!"/>
-</form>
 
-<!-- @id         = robot_data[:id]
-@name       = robot_data[:name]
-@city       = robot_data[:city]
-@state      = robot_data[:state]
-@birthday   = robot_data[:birthday]
-@hire_date  = robot_data[:hire_date]
-@department = robot_data[:department] -->
+
+<!-- <div class='row well'>
+  <div class='col-md-6'>
+    <h2>I'm learning Bootstrap!</h2>
+    <p>Biscuit gingerbread powder. Marshmallow donut pie lollipop sugar plum jelly beans. Jelly-o wafer cake candy cotton candy. Brownie icing gummies marshmallow bonbon I love souffle lemon drops tart. I love I love toffee. Tart jujubes candy canes. Toffee chupa chups dragee gummies chocolate bar caramels powder topping brownie. Tiramisu bear claw jelly beans halvah toffee biscuit powder. Chocolate chupa chups marzipan jelly sweet roll. Brownie pastry pie lollipop. I love jujubes fruitcake cupcake candy canes apple pie dragee. Sugar plum candy canes pastry caramels bonbon brownie chocolate. Lemon drops sugar plum cake.</p>
+    <button type = 'button' class='btn btn-default'>This is button</button>
+    <button type = 'button' class='btn btn-primary'>Push Butan</button>
+  </div>
+
+  <div class='col-md-6'>
+    <img src='images/taylor.jpg' alt='taylor' class='center-block'>
+  </div>
+</div> -->
+  <div class="jumbotron">
+    <div class="row">
+      <div class='well col-md-8'>
+        <h2><%= @robot.name %></h2>
+        <h2><%= @robot.city %></h2>
+        <h2><%= @robot.state %></h2>
+        <h2><%= @robot.birthday %></h2>
+        <h2><%= @robot.hire_date %></h2>
+        <h2><%= @robot.department %></h2>
+      </div>
+
+      <div class='col-md-4'>
+        <img src="https://robohash.org/<%= @robot.avatar_id %>" alt="<%= @robot.name %>" class='center-block'>
+      </div>
+    </div>
+  </div>
+
+  <form action="/robots/<%= @robot.id %>" method="post">
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="submit" name="delete" value="kill dat data!"/>
+  </form>
+
+
+  <!-- <div class="col-md8">
+    <div class="container-fluid">
+      <h2><%= @robot.name %></h2>
+      <h2><%= @robot.city %></h2>
+      <h2><%= @robot.state %></h2>
+      <h2><%= @robot.birthday %></h2>
+      <h2><%= @robot.hire_date %></h2>
+      <h2><%= @robot.department %></h2>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <img class="col-md-4" src="https://robohash.org/<%= @robot.avatar_id %>"/>
+  </div> -->

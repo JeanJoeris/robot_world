@@ -5,7 +5,8 @@ class Robot
               :state,
               :birthday,
               :hire_date,
-              :department
+              :department,
+              :avatar_id
 
   def initialize(robot_data)
     @id         = robot_data[:id]
@@ -15,6 +16,7 @@ class Robot
     @birthday   = format_time(robot_data[:birthday])
     @hire_date  = format_time(robot_data[:hire_date])
     @department = robot_data[:department]
+    @avatar_id  = @name + @department + @id.to_s
   end
 
   def format_time(time_string)

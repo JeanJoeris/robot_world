@@ -59,14 +59,23 @@ class RobotWorld
         result
       end
       number_of_robots = database["robots"].count
-      (total_age/number_of_robots).to_i/365
+      ((total_age/number_of_robots)/365.0).round(0)
     end
   end
 
-  def group_robots_by(grouping_parameter)
+
+  def counted_robots_by(grouping)
+    grouped_robots = group_robots_by(grouping)
+    grouped_robots.reduce({}) do |result, (grouping_value, robots)|
+      result[grouping_value] = robots.count
+      result
+    end
+  end
+
+  def group_robots_by(grouping)
     database.transaction do
       database["robots"].group_by do |robot|
-        robot[grouping_parameter]
+        robot[grouping]
       end
     end
   end
