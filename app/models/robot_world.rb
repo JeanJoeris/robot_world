@@ -47,6 +47,17 @@ class RobotWorld
     end
   end
 
+  def delete_all
+    # tasks = all
+    # tasks.each do |task|
+    #   destroy(task.id)
+    # end
+    database.transaction do
+      database["robots"] = []
+      database["total"] = 0
+    end
+  end
+
   def all
     raw_robots.map { |data| Robot.new(data) }
   end
@@ -55,24 +66,30 @@ class RobotWorld
     database.transaction do
       total_age = database["robots"].reduce(0) do |result, robot|
         robot = Robot.new(robot)
-        result += (Date.today - robot.birthday)
+        result += (Date.today - robot.birthday).abs
         result
       end
       number_of_robots = database["robots"].count
-      ((total_age/number_of_robots)/365.0).round(0)
+      ((total_age/number_of_robots)/365.0).round(0) if number_of_robots > 0
     end
   end
 
 
   def counted_robots_by(grouping)
     grouped_robots = group_robots_by(grouping)
-    grouped_robots.reduce({}) do |result, (grouping_value, robots)|
+    counted_grouped_robots = grouped_robots.reduce({}) do |result, (grouping_value, robots)|
       result[grouping_value] = robots.count
       result
+    end
+    counted_grouped_robots.sort_by do |grouping, count|
+      grouping
     end
   end
 
   def group_robots_by(grouping)
+    if grouping == :year
+      return group_robots_by_hiring_year
+    end
     database.transaction do
       database["robots"].group_by do |robot|
         robot[grouping]

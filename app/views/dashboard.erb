@@ -1,7 +1,8 @@
 <div class="jumbotron">
-  <h2>Average age</h2>
-  <p><%= @average_age %></p>
-  <% [:department, :city, :state].each do |grouping| %>
+  <div class="well well-sm">
+    <h2>Average Age: <small><%= @average_age %></small></h2>
+  </div>
+  <% [:department, :city, :state, :year].each do |grouping| %>
   <div class="well well-sm">
     <table class="table">
       <% grouping_data = eval("@robots_by_#{grouping}") %>

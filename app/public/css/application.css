@@ -1,5 +1,5 @@
 #background_container {
-  background-image: url("https://images4.alphacoders.com/270/27094.jpg");
+  background-image: url("http://www.shauntmax30.com/data/out/41/1304497-hd-the-matrix-wp-for-pc.gif");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -8,5 +8,15 @@
   background-color: #222222;
 }
 
-.jumbotron .well {
+.robo_pic {
+  width: 110px;
+  height: auto;
+}
+
+.user_well {
+  height: 300px;
+}
+
+.robot_profile_link div:link {
+  text-decoration: none;
 }

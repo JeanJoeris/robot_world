@@ -1,22 +1,25 @@
 <div class="jumbotron">
-  <h2 class='header'>Citizens of Robot World</h2>
-
-  <table class="table table-hover">
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Hire date</th>
-      <th>Department</th>
-      <th></th>
-    </tr>
+  <div class="well well-sm">
+    <h2 class='header'>Citizens of Robot World</h2>
+  </div>
+  <div class="row">
     <% @robots.each do |robot| %>
-    <tr>
-      <td><a href="robots/<%= robot.id %>"><%= robot.name %></a></td>
-      <td><%= robot.city %>, <%= robot.state %></td>
-      <td><%= robot.hire_date %></td>
-      <td><%= robot.department %></td>
-      <td><a href="/robots/<%= robot.id %>/edit">Edit</a></td>
-    </tr>
+      <a class="robot_profile_link" href="/robots/<%= robot.id %>">
+        <div class="container col-md-4">
+          <div class="well user_well">
+            <div class="row">
+              <div class="col-md-7">
+                <h2>Name:   <small><%= robot.name %></small></h2>
+                <h2>Job:   <small><%= robot.department %></small></h2>
+                <h2>Location:   <small><%= robot.city + ", " + robot.state %></small></h2>
+              </div>
+              <div class="col-md-5">
+                <img src="https://robohash.org/<%= robot.avatar_id %>" alt="<%= robot.name %>" class='center-block robo_pic'>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
     <% end %>
-  </table>
+  </div>
 </div>
