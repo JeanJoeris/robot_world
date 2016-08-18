@@ -50,8 +50,8 @@ class UserSeesAllRobotsTest < FeatureTest
     fill_in("Robot hire date:", :with => hire_date)
     fill_in("Robot department:", :with => department)
     click_button("Prepare to be assimilated!")
+    
     assert_equal "/robots", current_path
-
     assert page.has_content?(name)
     assert page.has_content?(city)
     assert page.has_content?(department)
