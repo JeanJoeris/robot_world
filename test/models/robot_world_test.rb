@@ -76,7 +76,7 @@ class RobotWorldTest < Minitest::Test
     assert_equal 0, robot_world.all.count
   end
 
-  def test_it_updates_a_task
+  def test_it_updates_a_robot
     updated_robot_data = get_single_robot_data
     updated_robot_data[:name] = "Bender"
     updated_robot_data[:department] = "Bending"

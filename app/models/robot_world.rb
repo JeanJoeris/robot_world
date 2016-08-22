@@ -84,5 +84,5 @@ class RobotWorld
       eval("robot.#{grouping}")
     end
   end
-  #
+  # SELECT AVG(age) AS age FROM (SELECT (strftime("%Y", "now") - strftime("%Y", )))
 end
