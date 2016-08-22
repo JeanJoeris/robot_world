@@ -1,0 +1,20 @@
+.well.well-sm
+  %h2
+    Average Age:
+    %small= @average_age
+
+
+.row#dashboard_tables
+  - [:department, :city, :state, :year].each do |grouping|
+    .container.col-md-3
+      .well.well-sm
+        %table{class: "table table-inverse"}
+          - grouping_data = eval("@robots_by_#{grouping}")
+          %tr
+            %th.col-md-3= grouping.capitalize
+            %th.col-md-9 Robot Count
+
+          - grouping_data.each do |grouping_value, count|
+            %tr
+              %td.col-md-8= grouping_value
+              %td.col-md-4= count

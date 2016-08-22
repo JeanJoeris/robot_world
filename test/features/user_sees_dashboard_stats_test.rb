@@ -23,21 +23,27 @@ class UserSeesDashboardStats < FeatureTest
 
   def test_user_sees_average_age
     visit "/"
-    assert page.has_content?("Average Age: 8")
+    within(".jumbotron") do
+      assert page.has_content?("Average Age: 8")
+    end
   end
 
   def test_user_sees_table_headers
     visit "/"
-    assert page.has_content?("Department Robot Count")
-    assert page.has_content?("City Robot Count")
-    assert page.has_content?("State Robot Count")
-    assert page.has_content?("Year Robot Count")
+    within(".jumbotron") do
+      assert page.has_content?("Department Robot Count")
+      assert page.has_content?("City Robot Count")
+      assert page.has_content?("State Robot Count")
+      assert page.has_content?("Year Robot Count")
+    end
   end
 
   def test_user_sees_correct_counts
     visit "/"
-    assert page.has_content?("New New York 1")
-    assert page.has_content?("Killing humans 1")
-    assert page.has_content?("2016 2")
+    within(".jumbotron") do
+      assert page.has_content?("New New York 1")
+      assert page.has_content?("Killing humans 1")
+      assert page.has_content?("2016 2")
+    end
   end
 end

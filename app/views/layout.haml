@@ -1,0 +1,26 @@
+!!!
+%html{:lang => "en"}
+
+%head
+
+  %link{:rel => "stylesheet", :href => "/css/bootstrap.css"}
+  %link{:rel => "stylesheet", :href => "/css/application.css"}
+  %title World of Robots
+
+%body
+
+  #background_container
+    .navbar.navbar-inverse.navbar-fixed-top.col-md-12
+      .container-fluid
+        .navbar-header
+          %a{:class => "navbar-brand", :href => "/"} Robot World
+        %ul{:class => 'nav navbar-nav navbar-right'}
+          %li
+            %a{:href => "/"} Home
+          %li
+            %a{:href => "/robots"} Robots
+          %li
+            %a{:href => "/robots/new"} Join us
+
+    .container#content_container
+      .jumbotron= yield

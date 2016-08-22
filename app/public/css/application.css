@@ -1,16 +1,14 @@
 #background_container {
+  background-color: black;
   background-image: url("http://www.shauntmax30.com/data/out/41/1304497-hd-the-matrix-wp-for-pc.gif");
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 1000px;
 }
 
 .jumbotron {
   background-color: #222222;
-}
-
-.robo_pic {
-  width: 110px;
-  height: auto;
+  margin-top: 100px;
 }
 
 .user_well {
@@ -19,4 +17,12 @@
 
 .robot_profile_link div:link {
   text-decoration: none;
+}
+
+.not_found {
+  height: 250px;
+}
+
+.table {
+  min-height: 350px;
 }

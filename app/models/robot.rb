@@ -9,13 +9,13 @@ class Robot
               :avatar_id
 
   def initialize(robot_data)
-    @id         = robot_data[:id]
-    @name       = robot_data[:name]
-    @city       = robot_data[:city]
-    @state      = robot_data[:state]
-    @birthday   = format_time(robot_data[:birthday])
-    @hire_date  = format_time(robot_data[:hire_date])
-    @department = robot_data[:department]
+    @id         = robot_data["id"]
+    @name       = robot_data["name"]
+    @city       = robot_data["city"]
+    @state      = robot_data["state"]
+    @birthday   = format_time(robot_data["birthday"])
+    @hire_date  = format_time(robot_data["hire_date"])
+    @department = robot_data["department"]
     @avatar_id  = @name + @department + @id.to_s
   end
 

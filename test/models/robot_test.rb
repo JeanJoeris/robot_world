@@ -3,13 +3,13 @@ require_relative "../test_helper"
 class RobotTest < Minitest::Test
   def test_robots_have_properties
     robot_data = {
-      id: 1,
-      name: "Hal",
-      city: "Where ever I want",
-      state: "Anywhere",
-      birthday: '2001-01-01',
-      hire_date: '2001-01-02',
-      department: "Killing humans",
+      "id" => 1,
+      "name" => "Hal",
+      "city" => "Where ever I want",
+      "state" => "Anywhere",
+      "birthday" => '2001-01-01',
+      "hire_date" => '2001-01-02',
+      "department" => "Killing humans",
     }
     test_robot = Robot.new(robot_data)
     assert_equal 1, test_robot.id

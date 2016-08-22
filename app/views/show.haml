@@ -1,0 +1,35 @@
+.jumbotron
+  .row
+    %br
+    %br
+    .well.col-md-8
+      %h2
+        Name:
+        .small= @robot.name
+      %h2
+        City:
+        .small= @robot.city
+      %h2
+        State:
+        .small= @robot.state
+      %h2
+        Birthday:
+        .small= @robot.birthday.strftime("%b %d, %Y")
+      .h2
+        Hire Date:
+        .small= @robot.hire_date.strftime("%b %d, %Y")
+      %h2
+        Department:
+        .small= @robot.department
+
+    .col-md-4
+      %img.center_block{src: "https://robohash.org/#{@robot.avatar_id}", alt: "{@robot.name}"}
+
+  .row
+    .row
+      %form.col-md-8{action: "/robots/#{@robot.id}/edit", method: "get"}
+        %input.btn.btn-warning{type: "submit", name: "delete", value: "I made a mistake and must correct it"}
+
+      %form.col-md-4{action: "/robots/#{@robot.id}", method: "post"}
+        %input{type: "hidden", name: "_method", value: "delete"}
+        %input.btn.btn-danger{type: "submit", name: "delete", value: "DESTROY MY HARD DRIVE"}

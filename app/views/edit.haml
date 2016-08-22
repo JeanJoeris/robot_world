@@ -1,0 +1,18 @@
+.well.well-sm
+  %h2.header Welcome, Robot
+  %p Do you need to edit your values?
+  %form{:action => "/robots/#{@robot.id}", :method => "post"}
+    %input{:name => "_method", :type => "hidden", :value => "put"}/
+    %label{:for => "robot_name"} Robot name:
+    %input#robot_name.form-control{:name => "robot[name]", :type => "text", :value => @robot.name}/
+    %label{:for => "robot_city"} Robot city:
+    %input#robot_city.form-control{:name => "robot[city]", :type => "text", :value => @robot.city}/
+    %label{:for => "robot_state"} Robot state:
+    %input#robot_state.form-control{:name => "robot[state]", :type => "text", :value => @robot.state}/
+    %label{:for => "robot_birthday"} Robot birthday:
+    %input#robot_birthday.form-control{:name => "robot[birthday]", :type => "date", :value => @robot.birthday}/
+    %label{:for => "robot_hire_date"} Robot hire date:
+    %input#robot_hire_date.form-control{:name => "robot[hire_date]", :type => "date", :value => @robot.hire_date}/
+    %label{:for => "robot_department"} Robot department:
+    %input#robot_department.form-control{:name => "robot[department]", :type => "text", :value => @robot.department}/
+    %input{:type => "submit", :value => "My changes are complete"}/

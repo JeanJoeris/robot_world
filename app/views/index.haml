@@ -1,0 +1,20 @@
+.well.well-sm
+  .h2 Citizens of Robot World
+.row
+  - @robots.each do |robot|
+    %a.robot_profile_link{:href => "/robots/#{robot.id}"}
+      .container.col-md-4
+        .well.user_well
+          .row
+            .col-md-7
+              %h2
+                Name:
+                %small= robot.name
+              %h2
+                Job:
+                %small= robot.department
+              %h2
+                Location:
+                %small= [robot.city, robot.state].join(", ")
+            .col-md-5
+              %img{:src => "https://robohash.org/#{robot.avatar_id}?size=120x120", :alt => robot.name, :class =>'center-block robo_pic'}

@@ -1,0 +1,19 @@
+.well
+  %h2.header Welcome, Robot
+  %p We heard you would like to join our robot collective
+
+%form{:action => '/robots', :method => 'post', :class => "well well-md"}
+  %label{:for => 'robot_name'} Robot name:
+  %input{:id => 'robot_name', :type => 'text', :name => 'robot[name]', :class => "form-control"}
+  %label{:for => 'robot_city'} Robot city:
+  %input{:id => 'robot_city', :type => 'text', :name => 'robot[city]', :class => "form-control"}
+  %label{:for => 'robot_state'} Robot state:
+  %input{:id => 'robot_state', :type => 'text', :name => 'robot[state]', :class => "form-control"}
+  %label{:for => 'robot_birthday'} Robot birthday:
+  %input{:id => 'robot_birthday', :type => 'date', :name => 'robot[birthday]', :class => "form-control"}
+  %label{:for => 'robot_hire_date'} Robot hire date:
+  %input{:id => 'robot_hire_date', :type => 'date', :name => 'robot[hire_date]', :class => "form-control"}
+  %label{:for => 'robot_department'} Robot department:
+  %input{:id => 'robot_department', :type => 'text', :name => 'robot[department]', :class => "form-control"}
+  %br
+  %input{:type => 'submit', :value => 'Prepare to be assimilated!'}

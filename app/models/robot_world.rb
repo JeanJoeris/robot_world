@@ -1,6 +1,3 @@
-require 'yaml/store'
-require_relative 'robot'
-
 class RobotWorld
   attr_reader :database
 
@@ -9,20 +6,13 @@ class RobotWorld
   end
 
   def create(robot_data)
-    database.transaction do
-      database['total'] ||= 0
-      database['total'] += 1
-      database["robots"] ||= []
-      database["robots"] << {
-        :id         => database["total"],
-        :name       => robot_data[:name],
-        :city       => robot_data[:city],
-        :state      => robot_data[:state],
-        :birthday   => robot_data[:birthday],
-        :hire_date  => robot_data[:hire_date],
-        :department => robot_data[:department]
-      }
-    end
+    database.execute("INSERT INTO robots (
+        name, city, state, birthday, hire_date, department
+      )
+      VALUES (?,?,?,?,?,?);",
+      robot_data[:name],robot_data[:city],robot_data[:state],
+      robot_data[:birthday],robot_data[:hire_date],robot_data[:department]
+    )
   end
 
   def find(id)
@@ -30,50 +20,50 @@ class RobotWorld
   end
 
   def update(robot_data, id)
-    database.transaction do
-      robot = database["robots"].find { |data| data[:id] == id.to_i}
-      robot[:name] = robot_data[:name]
-      robot[:city] = robot_data[:city]
-      robot[:state] = robot_data[:state]
-      robot[:birthday] = robot_data[:birthday]
-      robot[:hire_date] = robot_data[:hire_date]
-      robot[:department] = robot_data[:department]
-    end
+    database.execute("UPDATE robots
+      SET name = ?, city = ?, state = ?, birthday = ?, hire_date = ?, department = ?
+      WHERE id = ?;",
+      robot_data[:name],
+      robot_data[:city],
+      robot_data[:state],
+      robot_data[:birthday],
+      robot_data[:hire_date],
+      robot_data[:department],
+      id
+    )
   end
 
   def destroy(id)
-    database.transaction do
-      database["robots"].delete_if { |data| data[:id] == id.to_i }
-    end
+    database.execute("DELETE FROM robots WHERE id = ?;", id)
   end
 
   def delete_all
-    # tasks = all
-    # tasks.each do |task|
-    #   destroy(task.id)
-    # end
-    database.transaction do
-      database["robots"] = []
-      database["total"] = 0
-    end
+    database.execute("DELETE FROM robots;")
   end
 
   def all
-    raw_robots.map { |data| Robot.new(data) }
-  end
-
-  def average_age
-    database.transaction do
-      total_age = database["robots"].reduce(0) do |result, robot|
-        robot = Robot.new(robot)
-        result += (Date.today - robot.birthday).abs
-        result
-      end
-      number_of_robots = database["robots"].count
-      ((total_age/number_of_robots)/365.0).round(0) if number_of_robots > 0
+    raw_robots.map do |data|
+      Robot.new(data)
     end
   end
 
+  def raw_robot(id)
+    raw_robots.find { |robot| robot["id"] == id.to_i}
+  end
+
+  def raw_robots
+    raw_bots = database.execute("SELECT * FROM robots;")
+    raw_bots
+  end
+
+  def average_age
+    total_age = all.reduce(0) do |result, robot|
+      result += (Date.today - robot.birthday).abs
+      result
+    end
+    total_age_in_years = total_age/365
+    (total_age_in_years/all.count).round(0) if all.count > 0
+  end
 
   def counted_robots_by(grouping)
     grouped_robots = group_robots_by(grouping)
@@ -87,31 +77,12 @@ class RobotWorld
   end
 
   def group_robots_by(grouping)
-    if grouping == :year
-      return group_robots_by_hiring_year
+    if grouping == "year"
+      grouping = "hire_date.year.to_s"
     end
-    database.transaction do
-      database["robots"].group_by do |robot|
-        robot[grouping]
-      end
+    all.group_by do |robot|
+      eval("robot.#{grouping}")
     end
   end
-
-  def group_robots_by_hiring_year
-    database.transaction do
-      database["robots"].group_by do |robot|
-        Robot.new(robot).hire_date.year
-      end
-    end
-  end
-
-  def raw_robot(id)
-    raw_robots.find { |robot| robot[:id] == id.to_i}
-  end
-
-  def raw_robots
-    database.transaction do
-      database["robots"] || []
-    end
-  end
+  #
 end
